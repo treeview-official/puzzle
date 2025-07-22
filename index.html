@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>드래그 앤 드롭 퍼즐</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div class="game-container">
+            <h1>드래그 앤 드롭 퍼즐</h1>
+
+            <div class="settings">
+                <div class="setting-group">
+                    <label for="difficulty">난이도:</label>
+                    <select id="difficulty" onchange="changeDifficulty()">
+                        <option value="3">쉬움 (3x3)</option>
+                        <option value="4">보통 (4x4)</option>
+                        <option value="5">어려움 (5x5)</option>
+                        <option value="6">매우 어려움 (6x6)</option>
+                        <option value="8">전문가 (8x8)</option>
+                        <option value="10">마스터 (10x10)</option>
+                    </select>
+                </div>
+                <div class="setting-group">
+                    <label for="imageUrl">이미지 URL:</label>
+                    <input type="text" id="imageUrl" placeholder="이미지 URL 입력" style="width: 200px" />
+                    <button class="btn" style="padding: 6px 12px; margin: 0" onclick="changeImage()">변경</button>
+                </div>
+            </div>
+
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-value" id="completedCount">0</span>
+                    <span class="stat-label">완성된 조각</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value" id="totalPieces">9</span>
+                    <span class="stat-label">전체 조각</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value" id="timeElapsed">0</span>
+                    <span class="stat-label">소요 시간 (초)</span>
+                </div>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress" id="progressBar"></div>
+            </div>
+
+            <div class="puzzle-sections">
+                <div class="section">
+                    <h3>퍼즐 조각들</h3>
+                    <div id="puzzle-container"></div>
+                </div>
+
+                <div class="section">
+                    <h3>퍼즐 완성 영역</h3>
+                    <div id="drop-target-container"></div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button class="btn" onclick="shufflePieces()">섞기</button>
+                <button class="btn" onclick="resetPuzzle()">리셋</button>
+                <button class="btn" onclick="autoSolve()">자동 완성</button>
+                <button class="btn" onclick="startNewGame()">새 게임</button>
+            </div>
+        </div>
+
+        <div class="success-message" id="successMessage">
+            🎉 축하합니다! 퍼즐을 완성했습니다! 🎉
+            <div style="margin-top: 10px; font-size: 16px">완성 시간: <span id="finalTime"></span>초</div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
